@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💎 Vouches | Diamond Market</title>
+<style>
+:root{color-scheme:dark;--bg:#050507;--panel:#0d0b12;--line:#292033;--purple:#923cff;--pink:#c084fc;--muted:#a49aaf}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#30104c 0,transparent 45%),var(--bg);color:#f8f5ff;font:15px/1.55 Inter,system-ui,Segoe UI,sans-serif}
+a{color:#d4b4ff}.wrap{max-width:1000px;margin:auto;padding:28px 18px 70px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0 22px;border-bottom:1px solid #30213e}
+.brand{display:flex;align-items:center;gap:12px}.gem{display:grid;place-items:center;width:46px;height:46px;border:1px solid #7840a4;border-radius:14px;background:#21112e;font-size:24px;box-shadow:0 0 28px #7d2de42b}
+.brand strong{display:block;letter-spacing:.08em}.brand small,.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #6e36a0;border-radius:11px;padding:11px 15px;background:linear-gradient(120deg,#641bb1,#9b43ff);color:white;text-decoration:none;font-weight:750;cursor:pointer}
+.btn.secondary{background:#17121e;border-color:#392b48}.hero{padding:42px 0 28px}.eyebrow{color:#c99cff;font-weight:800;letter-spacing:.16em;font-size:12px}.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.04;margin:12px 0;background:linear-gradient(100deg,#fff,#d5c6e7 45%,#ad65ff);color:transparent;background-clip:text;letter-spacing:-.05em}.hero p{max-width:650px;color:#bdb4c8;margin:0}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{border:1px solid #342340;border-radius:999px;padding:7px 12px;background:#110d17;color:#d9c7ec;font-size:12px}
+.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:18px;align-items:start}.panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#100d16,#08070b);padding:20px;box-shadow:0 20px 70px #0005}.panel h2{margin:0 0 5px;font-size:20px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+label{display:block;font-size:12px;color:#d5c8e3;margin:13px 0 6px}input,textarea{width:100%;border:1px solid #382a47;background:#09070d;color:#fff;border-radius:10px;padding:12px;font:inherit;outline:none}input:focus,textarea:focus{border-color:#a65cff;box-shadow:0 0 0 3px #923cff20}textarea{min-height:100px;resize:vertical}.hint{font-size:12px;color:#9f94ab;margin-top:8px}
+.feedhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:28px 0 14px}.feed{display:grid;gap:12px}.vouch{border:1px solid #2d2338;background:linear-gradient(145deg,#100d16,#09080c);border-radius:15px;padding:17px}.vtop{display:flex;justify-content:space-between;gap:12px;align-items:start}.vname{font-weight:800;font-size:17px;overflow-wrap:anywhere}.price{color:#d0a3ff;font-weight:850;white-space:nowrap}.product{color:#bdb1ca;font-size:13px;margin-top:4px}.story{margin:13px 0 8px;white-space:pre-wrap;overflow-wrap:anywhere}.date{font-size:11px;color:#81758d}.empty{padding:25px;text-align:center;border:1px dashed #3a2a48;border-radius:14px;color:#a69ab2}
+.hidden{display:none!important}.adminbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{font-size:11px;color:#e9c9ff;border:1px solid #674080;border-radius:99px;padding:3px 8px}.owner-tools{display:flex;gap:8px;margin-top:12px}.owner-tools button{font-size:12px;padding:7px 10px}.danger{background:#421522!important;border-color:#7b2b42!important}
+footer{text-align:center;color:#766b82;font-size:12px;padding-top:28px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding-top:30px}.panel{padding:16px}header{align-items:flex-start}.btn{padding:10px 12px}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div class="brand"><div class="gem">💎</div><div><strong>DIAMOND MARKET</strong><small>Vouches & deal feedback</small></div></div><a class="btn secondary" href="https://diamond.shopl.io/store/diamond">← Back to Store</a></header>
+<section class="hero"><div class="eyebrow">TRUST • TRANSPARENCY • COMMUNITY</div><h1>💎 Vouches</h1><p>Feedback from Diamond Market deals. Submit your experience below; new vouches appear publicly only after owner approval.</p><div class="stats"><span class="pill" id="approvedCount">Approved vouches: —</span><span class="pill">New submissions require approval</span></div></section>
+<div class="layout">
+<section class="panel"><h2>Submit a Vouch</h2><p class="sub">Tell others what you bought and how the deal went.</p>
+<form id="vouchForm">
+<label for="name">Name / Telegram username *</label><input id="name" maxlength="60" required placeholder="@username or display name">
+<label for="product">What did you buy? *</label><input id="product" maxlength="120" required placeholder="e.g. Fortnite account">
+<label for="price">Price in EUR (€) *</label><input id="price" type="number" min="0.01" max="1000000" step="0.01" required placeholder="25.00">
+<label for="story">How did the deal go? *</label><textarea id="story" maxlength="1000" required placeholder="Delivery, communication, overall experience…"></textarea>
+<button class="btn" type="submit" id="submitBtn">Submit Vouch</button><p class="hint">Please submit honest feedback about a real transaction. Your vouch will remain private until approved.</p><p id="formMessage" class="hint" role="status"></p>
+</form></section>
+<aside class="panel"><h2>Owner access</h2><p class="sub">Sign in to review submissions, publish genuine vouches, or remove entries.</p>
+<form id="loginForm"><label for="email">Owner email</label><input id="email" type="email" required autocomplete="username" placeholder="owner email"><label for="password">Password</label><input id="password" type="password" required autocomplete="current-password" placeholder="Owner password"><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="submit">Owner Sign In</button><button class="btn secondary hidden" id="logoutBtn" type="button">Sign Out</button></div><p id="loginMessage" class="hint" role="status"></p></form>
+<div id="adminArea" class="hidden"><div class="adminbar"><span class="status" id="pendingCount">Pending: 0</span><span class="status" id="ownerStatus">Owner session active</span></div><p class="hint">Only approved vouches are visible in the public feed. Review pending items below.</p></div>
+</aside></div>
+<div id="pendingSection" class="hidden"><div class="feedhead"><h2>Pending approval</h2></div><div id="pendingFeed" class="feed"></div></div>
+<div class="feedhead"><h2>Published Vouches</h2><span class="muted" id="feedLabel">Latest first</span></div><div id="publicFeed" class="feed"><div class="empty">Loading vouches…</div></div>
+<footer>Diamond Market · Be honest. Respect privacy. Only submit feedback for real deals.</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* SETUP: Replace these two placeholders with your Supabase project URL and anon/publishable key.
+   Never put a service_role/secret key in this public file. */
+const SUPABASE_URL = "https://arnvmkvyybcwvzvxacka.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "sb_publishable_QvlV1dCTTOMv4uaW7tO3iQ_jOdYwZwS";
+const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("PASTE_") && !SUPABASE_ANON_KEY.includes("PASTE_");
+const db = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const $ = id => document.getElementById(id);
+let currentSession = null;
+function msg(id,text,isError=false){$(id).textContent=text;$(id).style.color=isError?"#ff8da8":"#bfa5dc";}
+function money(n){return new Intl.NumberFormat("en-IE",{style:"currency",currency:"EUR"}).format(Number(n));}
+function safeText(s){return String(s??"");}
+function card(v,admin=false){
+ const el=document.createElement("article");el.className="vouch";
+ const top=document.createElement("div");top.className="vtop";
+ const left=document.createElement("div");const name=document.createElement("div");name.className="vname";name.textContent=safeText(v.display_name);left.append(name);
+ const prod=document.createElement("div");prod.className="product";prod.textContent="Purchased: "+safeText(v.product_name);left.append(prod);
+ const price=document.createElement("div");price.className="price";price.textContent=money(v.price_eur);top.append(left,price);el.append(top);
+ const story=document.createElement("p");story.className="story";story.textContent=safeText(v.deal_feedback);el.append(story);
+ const date=document.createElement("div");date.className="date";date.textContent=new Date(v.created_at).toLocaleDateString(undefined,{day:"2-digit",month:"short",year:"numeric"});el.append(date);
+ if(admin){const tools=document.createElement("div");tools.className="owner-tools";
+  if(v.status!=="approved"){const approve=document.createElement("button");approve.className="btn";approve.textContent="Approve";approve.onclick=()=>moderate(v.id,"approved");tools.append(approve);}
+  const reject=document.createElement("button");reject.className="btn danger";reject.textContent=v.status==="pending"?"Reject & delete":"Delete";reject.onclick=()=>{if(confirm("Delete this vouch permanently?"))moderate(v.id,"delete")};tools.append(reject);el.append(tools);
+  const state=document.createElement("div");state.className="hint";state.textContent="Status: "+v.status;el.append(state);
+ }return el;
+}
+async function loadPublic(){
+ if(!db){$("publicFeed").innerHTML='<div class="empty">Connect Supabase to enable live vouches. Follow SETUP.txt.</div>';$("approvedCount").textContent="Approved vouches: —";return;}
+ const {data,error}=await db.from("vouches").select("id,display_name,product_name,price_eur,deal_feedback,created_at").eq("status","approved").order("created_at",{ascending:false});
+ if(error){$("publicFeed").innerHTML='<div class="empty">Could not load vouches. Check Supabase setup and policies.</div>';return;}
+ $("approvedCount").textContent="Approved vouches: "+data.length;$("publicFeed").replaceChildren();
+ if(!data.length){$("publicFeed").innerHTML='<div class="empty">No published vouches yet. Be the first to submit one.</div>';return;}
+ data.forEach(v=>$("publicFeed").append(card(v)));
+}
+async function loadPending(){
+ if(!db||!currentSession)return;
+ const {data,error}=await db.from("vouches").select("*").in("status",["pending","approved"]).order("created_at",{ascending:false});
+ if(error){msg("loginMessage","Could not load owner queue: "+error.message,true);return;}
+ const pending=data.filter(v=>v.status==="pending");$("pendingCount").textContent="Pending: "+pending.length;
+ $("pendingSection").classList.remove("hidden");$("pendingFeed").replaceChildren();
+ if(!pending.length)$("pendingFeed").innerHTML='<div class="empty">No vouches awaiting approval.</div>';
+ pending.forEach(v=>$("pendingFeed").append(card(v,true)));
+}
+async function moderate(id,status){
+ if(!db||!currentSession)return;
+ let result;
+ if(status==="delete")result=await db.from("vouches").delete().eq("id",id);
+ else result=await db.from("vouches").update({status}).eq("id",id);
+ if(result.error){alert("Action failed: "+result.error.message);return;}
+ await loadPublic();await loadPending();
+}
+$("vouchForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!db){msg("formMessage","The page needs Supabase setup before submissions can be saved.",true);return;}
+ const button=$("submitBtn");button.disabled=true;button.textContent="Submitting…";
+ const payload={display_name:$("name").value.trim(),product_name:$("product").value.trim(),price_eur:Number($("price").value),deal_feedback:$("story").value.trim(),status:"pending"};
+ const {error}=await db.from("vouches").insert(payload);
+ button.disabled=false;button.textContent="Submit Vouch";
+ if(error){msg("formMessage","Could not submit: "+error.message,true);return;}
+ $("vouchForm").reset();msg("formMessage","Submitted! Your vouch is waiting for owner approval."); 
+});
+$("loginForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!db){msg("loginMessage","Set up Supabase first (see SETUP.txt).",true);return;}
+ const {data,error}=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+ if(error){msg("loginMessage","Sign-in failed: "+error.message,true);return;}
+ currentSession=data.session;await showOwner();
+});
+async function showOwner(){
+ if(!currentSession){$("adminArea").classList.add("hidden");$("pendingSection").classList.add("hidden");$("logoutBtn").classList.add("hidden");return;}
+ $("adminArea").classList.remove("hidden");$("logoutBtn").classList.remove("hidden");msg("loginMessage","Signed in. If you are not allowlisted as owner, moderation actions will be denied.",false);await loadPending();
+}
+$("logoutBtn").addEventListener("click",async()=>{await db.auth.signOut();currentSession=null;await showOwner();msg("loginMessage","Signed out.");});
+(async()=>{if(!configured){await loadPublic();return;}const {data}=await db.auth.getSession();currentSession=data.session;await loadPublic();if(currentSession)await showOwner();})();
+</script></body></html>
